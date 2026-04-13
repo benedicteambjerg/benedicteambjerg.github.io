@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benedicte Ambjerg</title>
+  <meta name="description" content="Danish artist living and working in Berlin. Paintings centered on emotional depth and the subtle tension between vulnerability and strength." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #111110;
+      --white: #ffffff;
+      --muted: #aaa9a7;
+      --border: rgba(17,17,16,0.1);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 3rem 2rem 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .site-name {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 1.8rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--ink); }
+
+    /* ── GALLERY ── */
+    .gallery {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .art-item {
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+
+    .art-item:nth-child(1)  { animation-delay: 0.05s; }
+    .art-item:nth-child(2)  { animation-delay: 0.12s; }
+    .art-item:nth-child(3)  { animation-delay: 0.19s; }
+    .art-item:nth-child(4)  { animation-delay: 0.26s; }
+    .art-item:nth-child(5)  { animation-delay: 0.33s; }
+    .art-item:nth-child(6)  { animation-delay: 0.40s; }
+    .art-item:nth-child(7)  { animation-delay: 0.47s; }
+    .art-item:nth-child(8)  { animation-delay: 0.54s; }
+
+    .art-item img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Placeholder shown until real images are added */
+    .art-item .placeholder {
+      width: 100%;
+      background: #edecea;
+      display: block;
+    }
+
+    .art-caption {
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .art-caption-title {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .art-caption-meta {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .about h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .about p {
+      font-size: 0.88rem;
+      line-height: 2;
+      color: #666664;
+      margin-bottom: 1.2rem;
+      max-width: 560px;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    /* ── CONTACT ── */
+    .contact {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .contact h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact p {
+      font-size: 0.85rem;
+      color: #666664;
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .contact-links a {
+      display: flex;
+      gap: 1.5rem;
+      align-items: baseline;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--muted); }
+
+    .contact-links .label {
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 80px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .gallery { gap: 2.5rem; padding: 3rem 1.2rem 5rem; }
+      .about, .contact { padding: 3.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <a class="site-name" href="#">Benedicte Ambjerg</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ── GALLERY ── -->
+  <!--
+  ════════════════════════════════════════════════════
+  HOW TO ADD YOUR PAINTINGS
+  ════════════════════════════════════════════════════
+  1. Create a folder called "images" next to this file
+  2. Put your painting photos in that folder
+  3. For each painting, replace:
+       <div class="placeholder" style="height: 600px;"></div>
+     with:
+       <img src="images/bella.jpg" alt="Bella" />
+  4. To add more paintings, copy a full .art-item block
+     and paste it before the closing </div> of .gallery
+  ════════════════════════════════════════════════════
+  -->
+
+  <div class="gallery" id="work">
+
+    <div class="art-item">
+      <div class="placeholder" style="height: 680px;"></div>
+      <!-- Replace above with: <img src="images/bella.jpg" alt="Bella" /> -->
+      <div class="art-caption">
+        <span class="art-caption-title">Bella</span>
+        <span class="art-caption-meta">Oil on canvas · 80 × 100 cm</span>
+      </div>
+    </div>
+
+    <div class="art-item">
+      <div class="placeholder" style="height: 560px;"></div>
+      <!-- Replace above with: <img src="images/dorothy.jpg" alt="Dorothy" /> -->
+      <div class="art-caption">
+        <span class="art-caption-title">Dorothy</span>
+        <span class="art-caption-meta">Oil & oil pastel on canvas · 60 × 80 cm</span>
+      </div>
+    </div>
+
+    <div class="art-item">
+      <div class="placeholder" style="height: 580px;"></div>
+      <!-- Replace above with: <img src="images/grace.jpg" alt="Grace" /> -->
+      <div class="art-caption">
+        <span class="art-caption-title">Grace</span>
+        <span class="art-caption-meta">Oil & oil pastel on canvas · 70 × 70 cm</span>
+      </div>
+    </div>
+
+    <div class="art-item">
+      <div class="placeholder" style="height: 720px;"></div>
+      <!-- Replace above with: <img src="images/silke.jpg" alt="Silke" /> -->
+      <div class="art-caption">
+        <span class="art-caption-title">Silke</span>
+        <span class="art-caption-meta">Gouache on paper · 57 × 77 cm</span>
+      </div>
+    </div>
+
+    <!-- ADD MORE PAINTINGS HERE — copy a block above and paste it -->
+
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p>I am a Danish artist living and working in Berlin. My paintings center on emotional depth and the subtle tension between vulnerability and strength, often expressed through female figures.</p>
+    <p>My work is marked by soft yet dark tones, restrained color, and an intimate, contemplative atmosphere.</p>
+    <p>Original works are available for purchase. I am open to commissions — please get in touch to discuss.</p>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>For purchasing inquiries, commissions, or anything else — send an email and I will get back to you.</p>
+    <div class="contact-links">
+      <!-- Replace with your real email and Instagram -->
+      <a href="mailto:hello@benedicteambjerg.com">
+        <span class="label">Email</span>
+        hello@benedicteambjerg.com
+      </a>
+      <a href="https://instagram.com/benedicteambjerg" target="_blank" rel="noopener">
+        <span class="label">Instagram</span>
+        @benedicteambjerg
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
