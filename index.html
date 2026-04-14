@@ -20,31 +20,53 @@
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
 
-    .moodboard {
-      max-width: 1200px;
+    /* SINGLE COLUMN STACK */
+    .gallery {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 2.5rem 2rem 0;
-      columns: 3;
-      column-gap: 8px;
-      opacity: 0;
-      animation: fadeIn 1s 0.1s forwards;
+      padding: 3.5rem 2rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
-    .mb { break-inside: avoid; margin-bottom: 8px; overflow: hidden; }
-    .mb img { width: 100%; display: block; transition: transform 0.7s ease; }
-    .mb:hover img { transform: scale(1.03); }
 
-    .tagline { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 4rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; opacity: 0; animation: fadeIn 0.8s 0.5s forwards; }
-    .tagline-text { font-family: var(--serif); font-size: clamp(1rem, 2.2vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.5; }
+    .gallery-item {
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+
+    .gallery-item:nth-child(1) { animation-delay: 0.05s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.15s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.25s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.35s; }
+    .gallery-item:nth-child(5) { animation-delay: 0.45s; }
+    .gallery-item:nth-child(6) { animation-delay: 0.55s; }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    /* TAGLINE */
+    .tagline {
+      max-width: 900px; margin: 0 auto; padding: 0 2rem 5rem;
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;
+      opacity: 0; animation: fadeIn 0.8s 0.6s forwards;
+    }
+    .tagline-text { font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.4rem); font-weight: 300; font-style: italic; color: var(--muted); max-width: 460px; line-height: 1.6; }
     .tagline-links { display: flex; gap: 2rem; }
     .tagline-links a { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
     .tagline-links a:hover { color: var(--muted); border-color: var(--muted); }
 
-    .about { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
+    /* ABOUT */
+    .about { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
     .about h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .about p { font-size: 0.88rem; line-height: 2; color: #666664; margin-bottom: 1.2rem; max-width: 560px; }
     .about p:last-child { margin-bottom: 0; }
 
-    .contact { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
+    /* CONTACT */
+    .contact { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
     .contact h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .contact p { font-size: 0.85rem; color: #666664; line-height: 1.9; margin-bottom: 2rem; max-width: 460px; }
     .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
@@ -56,10 +78,14 @@
     .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    @media (max-width: 750px) { .moodboard { columns: 2; padding: 1.5rem 1rem 0; } .tagline { padding: 2rem 1rem 3rem; } .about, .contact { padding: 3.5rem 1.2rem; } nav { gap: 1.5rem; } }
-    @media (max-width: 480px) { .moodboard { columns: 1; } }
+    @media (max-width: 600px) {
+      .gallery { padding: 2.5rem 1.2rem 4rem; gap: 1rem; }
+      .tagline { padding: 0 1.2rem 4rem; }
+      .about, .contact { padding: 3.5rem 1.2rem; }
+      nav { gap: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -75,13 +101,13 @@
     </nav>
   </header>
 
-  <div class="moodboard">
-    <div class="mb"><img src="images/sisters in wood frame.jpg" alt="" /></div>
-    <div class="mb"><img src="images/WiltingAp2.jpg" alt="" /></div>
-    <div class="mb"><img src="images/Bella.jpg" alt="" /></div>
-    <div class="mb"><img src="images/REd theme- living room 4.jpg" alt="" /></div>
-    <div class="mb"><img src="images/therese in kitchen.jpg" alt="" /></div>
-    <div class="mb"><img src="images/paper rolled.jpg" alt="" /></div>
+  <div class="gallery">
+    <div class="gallery-item"><img src="images/sisters in wood frame.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="images/WiltingAp2.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="images/Bella.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="images/REd theme- living room 4.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="images/therese in kitchen.jpg" alt="" /></div>
+    <div class="gallery-item"><img src="images/paper rolled.jpg" alt="" /></div>
   </div>
 
   <div class="tagline">
@@ -103,9 +129,9 @@
     <h2>Contact</h2>
     <p>For purchasing inquiries, commissions, or anything else — send an email and I will get back to you.</p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#94f6f1faf1f0fdf7e0f1f5f9f6fef1e6f3d4f3f9f5fdf8baf7fbf9">
+      <a href="/cdn-cgi/l/email-protection#83e1e6ede6e7eae0f7e6e2eee1e9e6f1e4c3e4eee2eaefade0ecee">
         <span class="label">Email</span>
-        <span class="__cf_email__" data-cfemail="0a686f646f6e63697e6f6b6768606f786d4a6d676b636624696567">[email&#160;protected]</span>
+        <span class="__cf_email__" data-cfemail="ee8c8b808b8a878d9a8b8f838c848b9c89ae89838f8782c08d8183">[email&#160;protected]</span>
       </a>
       <a href="https://instagram.com/benedicteambjerg" target="_blank" rel="noopener">
         <span class="label">Instagram</span>
@@ -116,4 +142,4 @@
 
   <footer>
     <img class="footer-sig-runner" src="images/BAA signature 2.png" alt="Benedicte Ambjerg" />
-    <p>© <span id="year"></span> Benedicte Ambj
+    <p>© <span id="year"></span> Benedicte Ambje
