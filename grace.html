@@ -28,7 +28,7 @@
     .thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
-    .thumb img { width: 100%; display: block; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
     .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
     .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .info-col { position: sticky; top: 3rem; }
