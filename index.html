@@ -14,15 +14,22 @@
     html { scroll-behavior: smooth; }
     body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
 
-    header { text-align: center; padding: 2.5rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
-    .site-logo { display: inline-block; margin-bottom: 1.8rem; }
-    .site-logo img { height: 60px; width: auto; display: block; }
+    header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
     nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
 
-    /* MASONRY */
-    .moodboard { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 0; columns: 3; column-gap: 8px; opacity: 0; animation: fadeIn 1s 0.1s forwards; }
+    /* MOODBOARD — 6 images, masonry 3 cols */
+    .moodboard {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+      columns: 3;
+      column-gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 0.1s forwards;
+    }
     .mb { break-inside: avoid; margin-bottom: 8px; overflow: hidden; }
     .mb img { width: 100%; display: block; transition: transform 0.7s ease; }
     .mb:hover img { transform: scale(1.03); }
@@ -49,8 +56,21 @@
     .contact-links a:hover { color: var(--muted); }
     .contact-links .label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
 
-    footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .footer-sig { height: 36px; width: auto; opacity: 0.4; }
+    /* FOOTER with signature runner */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-sig-runner {
+      width: 100%;
+      max-width: 400px;
+      opacity: 0.25;
+      display: block;
+    }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -60,10 +80,9 @@
   </style>
 </head>
 <body>
+
   <header>
-    <a class="site-logo" href="index.html">
-      <img src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
-    </a>
+    <a class="site-name" href="index.html">Benedicte Ambjerg</a>
     <nav>
       <a href="index.html" class="active">Work</a>
       <a href="originals.html">Originals</a>
@@ -75,9 +94,10 @@
 
   <div class="moodboard">
     <div class="mb"><img src="images/sisters in wood frame.jpg" alt="" /></div>
-    <div class="mb"><img src="images/lydia frame wall.jpg" alt="" /></div>
-    <div class="mb"><img src="images/Bella.jpg" alt="" /></div>
     <div class="mb"><img src="images/WiltingAp2.jpg" alt="" /></div>
+    <div class="mb"><img src="images/Bella.jpg" alt="" /></div>
+    <div class="mb"><img src="images/REd theme- living room 4.jpg" alt="" /></div>
+    <div class="mb"><img src="images/therese in kitchen.jpg" alt="" /></div>
     <div class="mb"><img src="images/paper rolled.jpg" alt="" /></div>
   </div>
 
@@ -112,9 +132,10 @@
   </section>
 
   <footer>
-    <img class="footer-sig" src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
+    <img class="footer-sig-runner" src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
     <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
   </footer>
+
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
