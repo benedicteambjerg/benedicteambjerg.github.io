@@ -11,35 +11,27 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
     body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
-    header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
-    .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
+    header { text-align: center; padding: 2.5rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .site-logo { display: inline-block; margin-bottom: 1.8rem; }
+    .site-logo img { height: 60px; width: auto; display: block; }
     nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
-
     .breadcrumb { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 0; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .breadcrumb a { color: var(--muted); text-decoration: none; }
     .breadcrumb a:hover { color: var(--ink); }
     .breadcrumb span { margin: 0 0.5rem; }
-
-    .painting-layout {
-      max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 6rem;
-      display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start;
-    }
-
-    /* LEFT — image gallery */
+    .painting-layout { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 6rem; display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; }
     .gallery-col { display: flex; flex-direction: column; gap: 10px; }
-    .main-img img { width: 100%; display: block; }
+    .main-img { cursor: zoom-in; overflow: hidden; }
+    .main-img img { width: 100%; display: block; transition: transform 0.4s ease; }
+    .main-img:hover img { transform: scale(1.02); }
     .thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; border: 1px solid transparent; }
+    .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; display: block; }
-
-    /* Placeholder for extra images not yet uploaded */
     .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
     .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-
-    /* RIGHT — info */
     .info-col { position: sticky; top: 3rem; }
     .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
     .info-back:hover { color: var(--ink); }
@@ -49,29 +41,25 @@
     .info-table td { padding: 0.7rem 0; font-size: 0.78rem; line-height: 1.6; }
     .info-table td:first-child { color: var(--muted); width: 40%; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
     .info-desc { font-size: 0.82rem; line-height: 1.95; color: #666664; margin-bottom: 2.5rem; }
-    .inquire-btn {
-      display: block; width: 100%; text-align: center;
-      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--white); background: var(--ink); padding: 1rem 2rem;
-      text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer;
-    }
+    .inquire-btn { display: block; width: 100%; text-align: center; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 1rem 2rem; text-decoration: none; transition: opacity 0.2s; }
     .inquire-btn:hover { opacity: 0.75; }
     .info-note { font-size: 0.65rem; color: var(--muted); line-height: 1.7; margin-top: 1rem; text-align: center; }
-
-    footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; }
+    .lightbox { position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
+    .lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--muted); cursor: pointer; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+    .lightbox-close:hover { color: var(--ink); }
+    footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .footer-sig { height: 36px; width: auto; opacity: 0.4; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
-
-    @media (max-width: 800px) {
-      .painting-layout { grid-template-columns: 1fr; gap: 3rem; padding: 1.5rem 1.2rem 5rem; }
-      .info-col { position: static; }
-      nav { gap: 1.5rem; }
-      .breadcrumb { padding: 1.2rem 1.2rem 0; }
-    }
+    @media (max-width: 800px) { .painting-layout { grid-template-columns: 1fr; gap: 3rem; padding: 1.5rem 1.2rem 5rem; } .info-col { position: static; } nav { gap: 1.5rem; } .breadcrumb { padding: 1.2rem 1.2rem 0; } }
   </style>
 </head>
 <body>
   <header>
-    <a class="site-name" href="index.html">Benedicte Ambjerg</a>
+    <a class="site-logo" href="index.html">
+      <img src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
+    </a>
     <nav>
       <a href="index.html">Work</a>
       <a href="originals.html" class="active">Originals</a>
@@ -88,9 +76,8 @@
   </div>
 
   <div class="painting-layout">
-    <!-- LEFT: images -->
     <div class="gallery-col">
-      <div class="main-img" id="mainImg">
+      <div class="main-img" onclick="openLightbox('images/Flora_oiloncanvas_60x80cm.jpg')">
         <img src="images/Flora_oiloncanvas_60x80cm.jpg" alt="Flora" id="mainImgEl" />
       </div>
       <div class="thumb-row">
@@ -98,23 +85,17 @@
           <img src="images/Flora_oiloncanvas_60x80cm.jpg" alt="Flora" />
         </div>
         <!--
-          TO ADD MORE PHOTOS (close-up, hanging shot, etc.):
-          1. Upload the photo to your images folder
-          2. Copy this block and replace the filename:
+          TO ADD MORE PHOTOS:
+          Upload the photo to your images folder, then copy this block:
           <div class="thumb" onclick="setMain('images/YOUR_FILENAME.jpg', this)">
             <img src="images/YOUR_FILENAME.jpg" alt="Flora" />
           </div>
         -->
-        <div class="thumb">
-          <div class="img-placeholder"><span>Add photo</span></div>
-        </div>
-        <div class="thumb">
-          <div class="img-placeholder"><span>Add photo</span></div>
-        </div>
+        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
+        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
       </div>
     </div>
 
-    <!-- RIGHT: info -->
     <div class="info-col">
       <a class="info-back" href="originals.html">← Back to originals</a>
       <h1 class="info-title">Flora</h1>
@@ -129,14 +110,34 @@
     </div>
   </div>
 
-  <footer><p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p></footer>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <footer>
+    <img class="footer-sig" src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
+    <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
+  </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     function setMain(src, thumb) {
       document.getElementById('mainImgEl').src = src;
+      document.getElementById('mainImgEl').parentElement.onclick = () => openLightbox(src);
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
     }
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>
