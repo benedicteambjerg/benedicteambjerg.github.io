@@ -20,7 +20,6 @@
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
 
-    /* MOODBOARD — 6 images, masonry 3 cols */
     .moodboard {
       max-width: 1200px;
       margin: 0 auto;
@@ -34,20 +33,17 @@
     .mb img { width: 100%; display: block; transition: transform 0.7s ease; }
     .mb:hover img { transform: scale(1.03); }
 
-    /* TAGLINE */
     .tagline { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 4rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; opacity: 0; animation: fadeIn 0.8s 0.5s forwards; }
     .tagline-text { font-family: var(--serif); font-size: clamp(1rem, 2.2vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.5; }
     .tagline-links { display: flex; gap: 2rem; }
     .tagline-links a { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
     .tagline-links a:hover { color: var(--muted); border-color: var(--muted); }
 
-    /* ABOUT */
     .about { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
     .about h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .about p { font-size: 0.88rem; line-height: 2; color: #666664; margin-bottom: 1.2rem; max-width: 560px; }
     .about p:last-child { margin-bottom: 0; }
 
-    /* CONTACT */
     .contact { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
     .contact h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .contact p { font-size: 0.85rem; color: #666664; line-height: 1.9; margin-bottom: 2rem; max-width: 460px; }
@@ -56,21 +52,8 @@
     .contact-links a:hover { color: var(--muted); }
     .contact-links .label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
 
-    /* FOOTER with signature runner */
-    footer {
-      border-top: 0.5px solid var(--border);
-      padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .footer-sig-runner {
-      width: 100%;
-      max-width: 400px;
-      opacity: 0.25;
-      display: block;
-    }
+    footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -94,10 +77,10 @@
 
   <div class="moodboard">
     <div class="mb"><img src="images/sisters in wood frame.jpg" alt="" /></div>
-    <div class="mb"><img src="images/therese in kitchen.jpg" alt="" /></div>
-    <div class="mb"><img src="images/REd theme- living room 4.jpg" alt="" /></div>
-    <div class="mb"><img src="images/Bella.jpg" alt="" /></div>
     <div class="mb"><img src="images/WiltingAp2.jpg" alt="" /></div>
+    <div class="mb"><img src="images/Bella.jpg" alt="" /></div>
+    <div class="mb"><img src="images/REd theme- living room 4.jpg" alt="" /></div>
+    <div class="mb"><img src="images/therese in kitchen.jpg" alt="" /></div>
     <div class="mb"><img src="images/paper rolled.jpg" alt="" /></div>
   </div>
 
@@ -120,9 +103,9 @@
     <h2>Contact</h2>
     <p>For purchasing inquiries, commissions, or anything else — send an email and I will get back to you.</p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#f795929992939e948392969a959d928590b7909a969e9bd994989a">
+      <a href="mailto:benedicteambjerg@gmail.com">
         <span class="label">Email</span>
-        <span class="__cf_email__" data-cfemail="3e5c5b505b5a575d4a5b5f535c545b4c597e59535f5752105d5153">[email&#160;protected]</span>
+        benedicteambjerg@gmail.com
       </a>
       <a href="https://instagram.com/benedicteambjerg" target="_blank" rel="noopener">
         <span class="label">Instagram</span>
@@ -133,4 +116,8 @@
 
   <footer>
     <img class="footer-sig-runner" src="images/BAA_signature_2.png" alt="Benedicte Ambjerg" />
-    <p>© <span id="year"></span> Benedicte Ambje
+    <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
