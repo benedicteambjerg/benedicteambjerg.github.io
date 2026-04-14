@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tonya — Benedicte Ambjerg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
+    header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--ink); }
+
+    .breadcrumb { max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem 0; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb span { margin: 0 0.5rem; }
+
+    .painting-layout {
+      max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 6rem;
+      display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start;
+    }
+
+    /* LEFT — image gallery */
+    .gallery-col { display: flex; flex-direction: column; gap: 10px; }
+    .main-img img { width: 100%; display: block; }
+    .thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.6; transition: opacity 0.2s; border: 1px solid transparent; }
+    .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
+    .thumb img { width: 100%; display: block; }
+
+    /* Placeholder for extra images not yet uploaded */
+    .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
+    .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* RIGHT — info */
+    .info-col { position: sticky; top: 3rem; }
+    .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
+    .info-back:hover { color: var(--ink); }
+    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; line-height: 1.1; }
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+    .info-table tr { border-bottom: 0.5px solid var(--border); }
+    .info-table td { padding: 0.7rem 0; font-size: 0.78rem; line-height: 1.6; }
+    .info-table td:first-child { color: var(--muted); width: 40%; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .info-desc { font-size: 0.82rem; line-height: 1.95; color: #666664; margin-bottom: 2.5rem; }
+    .inquire-btn {
+      display: block; width: 100%; text-align: center;
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--white); background: var(--ink); padding: 1rem 2rem;
+      text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer;
+    }
+    .inquire-btn:hover { opacity: 0.75; }
+    .info-note { font-size: 0.65rem; color: var(--muted); line-height: 1.7; margin-top: 1rem; text-align: center; }
+
+    footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; }
+    footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
+
+    @media (max-width: 800px) {
+      .painting-layout { grid-template-columns: 1fr; gap: 3rem; padding: 1.5rem 1.2rem 5rem; }
+      .info-col { position: static; }
+      nav { gap: 1.5rem; }
+      .breadcrumb { padding: 1.2rem 1.2rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="site-name" href="index.html">Benedicte Ambjerg</a>
+    <nav>
+      <a href="index.html">Work</a>
+      <a href="originals.html" class="active">Originals</a>
+      <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="originals.html">Originals</a>
+    <span>›</span>
+    Tonya
+  </div>
+
+  <div class="painting-layout">
+    <!-- LEFT: images -->
+    <div class="gallery-col">
+      <div class="main-img" id="mainImg">
+        <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" id="mainImgEl" />
+      </div>
+      <div class="thumb-row">
+        <div class="thumb active" onclick="setMain('images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg', this)">
+          <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" />
+        </div>
+        <!--
+          TO ADD MORE PHOTOS (close-up, hanging shot, etc.):
+          1. Upload the photo to your images folder
+          2. Copy this block and replace the filename:
+          <div class="thumb" onclick="setMain('images/YOUR_FILENAME.jpg', this)">
+            <img src="images/YOUR_FILENAME.jpg" alt="Tonya" />
+          </div>
+        -->
+        <div class="thumb">
+          <div class="img-placeholder"><span>Add photo</span></div>
+        </div>
+        <div class="thumb">
+          <div class="img-placeholder"><span>Add photo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: info -->
+    <div class="info-col">
+      <a class="info-back" href="originals.html">← Back to originals</a>
+      <h1 class="info-title">Tonya</h1>
+      <table class="info-table">
+        <tr><td>Medium</td><td>Gouache & oil pastel on paper</td></tr>
+        <tr><td>Size</td><td>57 × 77 cm</td></tr>
+        <tr><td>Availability</td><td>Available</td></tr>
+      </table>
+      <p class="info-desc">Original, one-of-a-kind work. For pricing and further details, please get in touch directly.</p>
+      <a class="inquire-btn" href="mailto:benedicteambjerg@gmail.com?subject=Inquiry: Tonya">Inquire about this work</a>
+      <p class="info-note">You will receive a reply within 1–2 business days.</p>
+    </div>
+  </div>
+
+  <footer><p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function setMain(src, thumb) {
+      document.getElementById('mainImgEl').src = src;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
+  </script>
+</body>
+</html>

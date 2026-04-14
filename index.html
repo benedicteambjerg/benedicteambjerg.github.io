@@ -4,46 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benedicte Ambjerg</title>
-  <meta name="description" content="Danish artist living and working in Berlin. Paintings centered on emotional depth and the subtle tension between vulnerability and strength." />
+  <meta name="description" content="Danish artist living and working in Berlin." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #111110;
-      --white: #ffffff;
-      --muted: #aaa9a7;
-      --border: rgba(17,17,16,0.1);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Jost', sans-serif;
-    }
+    :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
     html { scroll-behavior: smooth; }
     body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
     header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
     .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
-    nav { display: flex; justify-content: center; gap: 2.5rem; list-style: none; flex-wrap: wrap; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
-    .gallery { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; display: flex; flex-direction: column; gap: 3rem; }
-    .art-item { width: 100%; opacity: 0; animation: fadeIn 0.8s forwards; }
-    .art-item:nth-child(1) { animation-delay: 0.05s; }
-    .art-item:nth-child(2) { animation-delay: 0.12s; }
-    .art-item:nth-child(3) { animation-delay: 0.19s; }
-    .art-item:nth-child(4) { animation-delay: 0.26s; }
-    .art-item:nth-child(5) { animation-delay: 0.33s; }
-    .art-item:nth-child(6) { animation-delay: 0.40s; }
-    .art-item:nth-child(7) { animation-delay: 0.47s; }
-    .art-item:nth-child(8) { animation-delay: 0.54s; }
-    .art-item:nth-child(9) { animation-delay: 0.61s; }
-    .art-item img { width: 100%; display: block; }
-    .art-caption { margin-top: 0.75rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-    .art-caption-title { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink); }
-    .art-caption-meta { font-size: 0.65rem; letter-spacing: 0.08em; color: var(--muted); text-align: right; }
+
+    /* MOODBOARD */
+    .moodboard {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 0.1s forwards;
+    }
+    .mb { overflow: hidden; }
+    .mb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .mb:hover img { transform: scale(1.03); }
+
+    /* Grid positions */
+    .mb-1 { grid-column: 1; grid-row: 1 / 3; height: 680px; }
+    .mb-2 { grid-column: 2; grid-row: 1; height: 332px; }
+    .mb-3 { grid-column: 3; grid-row: 1; height: 332px; }
+    .mb-4 { grid-column: 2; grid-row: 2; height: 340px; }
+    .mb-5 { grid-column: 3; grid-row: 2; height: 340px; }
+
+    /* TAGLINE */
+    .tagline {
+      max-width: 1200px; margin: 0 auto; padding: 2.5rem 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;
+      opacity: 0; animation: fadeIn 0.8s 0.5s forwards;
+    }
+    .tagline-text { font-family: var(--serif); font-size: clamp(1rem, 2.2vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--muted); max-width: 500px; line-height: 1.5; }
+    .tagline-links { display: flex; gap: 2rem; }
+    .tagline-links a { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .tagline-links a:hover { color: var(--muted); border-color: var(--muted); }
+
+    /* ABOUT */
     .about { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
-    .about h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; letter-spacing: 0.02em; }
+    .about h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .about p { font-size: 0.88rem; line-height: 2; color: #666664; margin-bottom: 1.2rem; max-width: 560px; }
     .about p:last-child { margin-bottom: 0; }
+
+    /* CONTACT */
     .contact { max-width: 780px; margin: 0 auto; padding: 5rem 2rem; border-top: 0.5px solid var(--border); }
     .contact h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 2rem; }
     .contact p { font-size: 0.85rem; color: #666664; line-height: 1.9; margin-bottom: 2rem; max-width: 460px; }
@@ -51,10 +67,23 @@
     .contact-links a { display: flex; gap: 1.5rem; align-items: baseline; text-decoration: none; color: var(--ink); font-size: 0.82rem; transition: color 0.2s; }
     .contact-links a:hover { color: var(--muted); }
     .contact-links .label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); min-width: 80px; }
+
     footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 600px) { .gallery { gap: 2.5rem; padding: 3rem 1.2rem 5rem; } .about, .contact { padding: 3.5rem 1.2rem; } nav { gap: 1.5rem; } }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 750px) {
+      .moodboard { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 5px; padding: 1.5rem 1rem 0; }
+      .mb-1 { grid-column: 1 / 3; grid-row: auto; height: 380px; }
+      .mb-2 { grid-column: 1; grid-row: auto; height: 240px; }
+      .mb-3 { grid-column: 2; grid-row: auto; height: 240px; }
+      .mb-4 { grid-column: 1; grid-row: auto; height: 240px; }
+      .mb-5 { grid-column: 2; grid-row: auto; height: 240px; }
+      .tagline { padding: 2rem 1rem 3rem; }
+      .about, .contact { padding: 3.5rem 1.2rem; }
+      nav { gap: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -63,75 +92,25 @@
     <nav>
       <a href="index.html" class="active">Work</a>
       <a href="originals.html">Originals</a>
-      <a href="prints.html">Prints</a>
+      <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <div class="gallery">
-    <div class="art-item">
-      <img src="images/Bella_oiloncanvas_80x100cm.jpg" alt="Bella" />
-      <div class="art-caption">
-        <span class="art-caption-title">Bella</span>
-        <span class="art-caption-meta">Oil on canvas · 80 × 100 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Dorothy_oilpiantandoilpasteloncanvas_60x80cm.jpg" alt="Dorothy" />
-      <div class="art-caption">
-        <span class="art-caption-title">Dorothy</span>
-        <span class="art-caption-meta">Oil & oil pastel on canvas · 60 × 80 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Flora_oiloncanvas_60x80cm.jpg" alt="Flora" />
-      <div class="art-caption">
-        <span class="art-caption-title">Flora</span>
-        <span class="art-caption-meta">Oil on canvas · 60 × 80 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg" alt="Grace" />
-      <div class="art-caption">
-        <span class="art-caption-title">Grace</span>
-        <span class="art-caption-meta">Oil & oil pastel on canvas · 70 × 70 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Sadie_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Sadie" />
-      <div class="art-caption">
-        <span class="art-caption-title">Sadie</span>
-        <span class="art-caption-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Silke" />
-      <div class="art-caption">
-        <span class="art-caption-title">Silke</span>
-        <span class="art-caption-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Sisters_goaucheandsoftpastelonpaper_57x77cm.jpg" alt="Sisters" />
-      <div class="art-caption">
-        <span class="art-caption-title">Sisters</span>
-        <span class="art-caption-meta">Gouache & soft pastel on paper · 57 × 77 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Therese_goaucheandsoftpastelonpaper_40x50cm.jpg" alt="Therese" />
-      <div class="art-caption">
-        <span class="art-caption-title">Therese</span>
-        <span class="art-caption-meta">Gouache & soft pastel on paper · 40 × 50 cm</span>
-      </div>
-    </div>
-    <div class="art-item">
-      <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" />
-      <div class="art-caption">
-        <span class="art-caption-title">Tonya</span>
-        <span class="art-caption-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
-      </div>
+  <div class="moodboard">
+    <div class="mb mb-1"><img src="images/sisters_in_wood_frame.jpg" alt="" /></div>
+    <div class="mb mb-2"><img src="images/therese_in_kitchen.jpg" alt="" /></div>
+    <div class="mb mb-3"><img src="images/Bella.jpg" alt="" /></div>
+    <div class="mb mb-4"><img src="images/REd_theme-_living_room_4.jpg" alt="" /></div>
+    <div class="mb mb-5"><img src="images/paper_rolled.jpg" alt="" /></div>
+  </div>
+
+  <div class="tagline">
+    <p class="tagline-text">Paintings of quiet tension — figures caught between vulnerability and strength.</p>
+    <div class="tagline-links">
+      <a href="originals.html">View originals</a>
+      <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Shop prints</a>
     </div>
   </div>
 
@@ -146,9 +125,9 @@
     <h2>Contact</h2>
     <p>For purchasing inquiries, commissions, or anything else — send an email and I will get back to you.</p>
     <div class="contact-links">
-      <a href="mailto:hello@benedicteambjerg.com">
+      <a href="mailto:benedicteambjerg@gmail.com">
         <span class="label">Email</span>
-        hello@benedicteambjerg.com
+        benedicteambjerg@gmail.com
       </a>
       <a href="https://instagram.com/benedicteambjerg" target="_blank" rel="noopener">
         <span class="label">Instagram</span>
