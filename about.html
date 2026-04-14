@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Benedicte Ambjerg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
+
+    header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--ink); }
+
+    /* PAGE LAYOUT */
+    .about-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* LEFT — sticky label column */
+    .cv-sidebar { position: sticky; top: 4rem; }
+    .cv-sidebar-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .cv-sidebar-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .cv-sidebar-contact { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cv-sidebar-contact a { font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cv-sidebar-contact a:hover { color: var(--ink); }
+
+    /* RIGHT — CV content */
+    .cv-content { }
+
+    .cv-section { margin-bottom: 3.5rem; }
+    .cv-section:last-child { margin-bottom: 0; }
+
+    .cv-section-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .cv-bio {
+      font-size: 0.88rem;
+      line-height: 2;
+      color: #555554;
+    }
+
+    .cv-entry { margin-bottom: 1.8rem; }
+    .cv-entry:last-child { margin-bottom: 0; }
+
+    .cv-entry-title {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cv-entry-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .cv-entry-desc {
+      font-size: 0.78rem;
+      color: #666664;
+      line-height: 1.8;
+    }
+
+    footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
+    footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
+
+    @media (max-width: 700px) {
+      .about-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 1.2rem 6rem; }
+      .cv-sidebar { position: static; }
+      nav { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="site-name" href="index.html">Benedicte Ambjerg</a>
+    <nav>
+      <a href="index.html">Work</a>
+      <a href="originals.html">Originals</a>
+      <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="about-wrap">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="cv-sidebar">
+      <h1 class="cv-sidebar-name">Benedicte<br>Ambjerg</h1>
+      <p class="cv-sidebar-title">Artist</p>
+      <div class="cv-sidebar-contact">
+        <a href="mailto:benedicteambjerg@gmail.com">benedicteambjerg@gmail.com</a>
+        <a href="https://instagram.com/benedicteambjerg" target="_blank" rel="noopener">@benedicteambjerg</a>
+        <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Shop prints</a>
+      </div>
+    </div>
+
+    <!-- RIGHT CV -->
+    <div class="cv-content">
+
+      <div class="cv-section">
+        <img src="images/DSC00461_2.JPG" alt="Benedicte Ambjerg in her studio" style="width: 100%; display: block; margin-bottom: 3rem;" />
+        <p class="cv-section-title">Profile</p>
+        <p class="cv-bio">Self-taught, emerging artist based in Berlin, specialising in figurative fine art. Originally from Denmark, but lived mostly abroad. Professional and educational background in business management, pursuing a career in art since late 2022. Currently working full-time on art, slowly stepping into the Berlin art scene with work that reveals narratives of finding beauty in mental fragility, anxiety, women's struggles and profound loss.</p>
+      </div>
+
+      <div class="cv-section">
+        <p class="cv-section-title">Exhibitions</p>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition at Kühlhaus (BAAM 10), Berlin</p>
+          <span class="cv-entry-date">04/12/2025 — 07/12/2025</span>
+          <p class="cv-entry-desc">Group exhibition showing a selection of 12 artworks. Exhibition arranged by Berlin Artist Art Market.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition 'Scout' at Galleri Heike Arndt DK</p>
+          <span class="cv-entry-date">12/10/2024 — 31/12/2024</span>
+          <p class="cv-entry-desc">Single artwork placed for group exhibition over six months.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition 'Fresh Legs' at Heike Arndt, Berlin</p>
+          <span class="cv-entry-date">01/07/2024 — 01/05/2025</span>
+          <p class="cv-entry-desc">Single artwork placed for six months at Heike Arndt Gallery, Berlin.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition at Aestrange, Berlin</p>
+          <span class="cv-entry-date">10/11/2023 — 03/05/2024</span>
+          <p class="cv-entry-desc">Single artwork placed for long-term exhibition at Estrange Gallery and Studio.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition at Pop Kudamm (BAAM Paper Edition), Berlin</p>
+          <span class="cv-entry-date">14/12/2023 — 17/12/2023</span>
+          <p class="cv-entry-desc">Group exhibition showing a selection of 8 artworks. Exhibition arranged by Berlin Affordable Art Market.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition at The Notagallery (BAAM), Berlin</p>
+          <span class="cv-entry-date">07/12/2023 — 10/12/2023</span>
+          <p class="cv-entry-desc">Group exhibition showing a selection of 4 artworks. Exhibition arranged by Berlin Affordable Art Market.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Group Exhibition at Neues Amt Altona (HAAM), Hamburg</p>
+          <span class="cv-entry-date">27/10/2023 — 30/10/2023</span>
+          <p class="cv-entry-desc">Group exhibition showing a selection of 4 artworks. Exhibition arranged by Hamburg Affordable Art Market.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Solo Exhibition at Roskilde Hospital Maternity Unit</p>
+          <span class="cv-entry-date">10/05/2022 — present</span>
+          <p class="cv-entry-desc">Commissioned to create a 60 × 80 cm artwork for the maternity consultation unit at Roskilde Hospital, Denmark.</p>
+        </div>
+
+      </div>
+
+      <div class="cv-section">
+        <p class="cv-section-title">Other Projects</p>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Song Cover Artwork</p>
+          <span class="cv-entry-date">14/11/2023</span>
+          <p class="cv-entry-desc">Artwork cover created for recording artist Yiannis Alexander.</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">EP Cover Artwork</p>
+          <span class="cv-entry-date">14/09/2022</span>
+          <p class="cv-entry-desc">Artwork cover created for recording artist Updog.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <img class="footer-sig-runner" src="images/BAA signature 2.png" alt="Benedicte Ambjerg" />
+    <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
