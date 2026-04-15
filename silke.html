@@ -29,12 +29,11 @@
     .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
-    .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
-    .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .info-col { position: sticky; top: 3rem; }
     .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
     .info-back:hover { color: var(--ink); }
-    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; line-height: 1.1; }
+    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 0.5rem; line-height: 1.1; }
+    .info-price { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem; }
     .info-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
     .info-table tr { border-bottom: 0.5px solid var(--border); }
     .info-table td { padding: 0.7rem 0; font-size: 0.78rem; line-height: 1.6; }
@@ -74,35 +73,39 @@
 
   <div class="painting-layout">
     <div class="gallery-col">
-      <div class="main-img" onclick="openLightbox('images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg')">
-        <img src="images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Silke" id="mainImgEl" />
+      <div class="main-img" onclick="openLightbox('images/silke_1.jpg')">
+        <img src="images/silke_1.jpg" alt="Silke" id="mainImgEl" />
       </div>
       <div class="thumb-row">
-        <div class="thumb active" onclick="setMain('images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg', this)">
-          <img src="images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Silke" />
+        <div class="thumb active" onclick="setMain('images/silke_1.jpg', this)">
+          <img src="images/silke_1.jpg" alt="Silke" />
         </div>
-        <!--
-          TO ADD MORE PHOTOS:
-          Upload to images folder, then copy this block and fill in filename:
-          <div class="thumb" onclick="setMain('images/FILENAME.jpg', this)">
-            <img src="images/FILENAME.jpg" alt="Silke" />
-          </div>
-        -->
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
+        <div class="thumb" onclick="setMain('images/silke_2.jpg', this)">
+          <img src="images/silke_2.jpg" alt="Silke — room view" />
+        </div>
+        <div class="thumb" onclick="setMain('images/silke_3.jpg', this)">
+          <img src="images/silke_3.jpg" alt="Silke — detail face" />
+        </div>
+        <div class="thumb" onclick="setMain('images/silke_4.jpg', this)">
+          <img src="images/silke_4.jpg" alt="Silke — detail fabric" />
+        </div>
+        <div class="thumb" onclick="setMain('images/silke_5.jpg', this)">
+          <img src="images/silke_5.jpg" alt="Silke — detail leaves" />
+        </div>
       </div>
     </div>
 
     <div class="info-col">
       <a class="info-back" href="originals.html">← Back to originals</a>
       <h1 class="info-title">Silke</h1>
+      <p class="info-price">€700</p>
       <table class="info-table">
         <tr><td>Medium</td><td>Gouache & oil pastel on paper</td></tr>
         <tr><td>Size</td><td>57 × 77 cm</td></tr>
         <tr><td>Availability</td><td>Available</td></tr>
       </table>
-      <p class="info-desc">Original, one-of-a-kind work. For pricing and further details, please get in touch directly.</p>
-      <a class="inquire-btn" href="/cdn-cgi/l/email-protection#85e7e0ebe0e1ece6f1e0e4e8e7efe0f7e2c5e2e8e4ece9abe6eae8baf6f0e7efe0e6f1b8ccebf4f0ecf7fcbfa5d6ece9eee0">Inquire about this work</a>
+      <p class="info-desc">Original, one-of-a-kind work. For further details or to arrange a viewing, please get in touch directly.</p>
+      <a class="inquire-btn" href="mailto:benedicteambjerg@gmail.com?subject=Inquiry: Silke">Inquire about this work</a>
       <p class="info-note">You will receive a reply within 1–2 business days.</p>
     </div>
   </div>
@@ -117,7 +120,7 @@
     <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     function setMain(src, thumb) {
       document.getElementById('mainImgEl').src = src;
@@ -130,7 +133,7 @@
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-        function closeLightbox() {
+    function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
