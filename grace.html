@@ -74,28 +74,26 @@
 
   <div class="painting-layout">
     <div class="gallery-col">
-      <div class="main-img" onclick="openLightbox('images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg')">
-        <img src="images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg" alt="Grace" id="mainImgEl" />
+      <div class="main-img" onclick="openLightbox('images/grace_1.jpg')">
+        <img src="images/grace_1.jpg" alt="Grace" id="mainImgEl" />
       </div>
       <div class="thumb-row">
-        <div class="thumb active" onclick="setMain('images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg', this)">
-          <img src="images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg" alt="Grace" />
+        <div class="thumb active" onclick="setMain('images/grace_1.jpg', this)">
+          <img src="images/grace_1.jpg" alt="Grace" />
         </div>
-        <!--
-          TO ADD MORE PHOTOS:
-          Upload to images folder, then copy this block and fill in filename:
-          <div class="thumb" onclick="setMain('images/FILENAME.jpg', this)">
-            <img src="images/FILENAME.jpg" alt="Grace" />
-          </div>
-        -->
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
+        <div class="thumb" onclick="setMain('images/grace_2.jpg', this)">
+          <img src="images/grace_2.jpg" alt="Grace — room view" />
+        </div>
+        <div class="thumb" onclick="setMain('images/grace_3.jpeg', this)">
+          <img src="images/grace_3.jpeg" alt="Grace — studio" />
+        </div>
       </div>
     </div>
 
     <div class="info-col">
       <a class="info-back" href="originals.html">← Back to originals</a>
       <h1 class="info-title">Grace</h1>
+      <p class="info-price">€850</p>
       <table class="info-table">
         <tr><td>Medium</td><td>Oil & oil pastel on canvas</td></tr>
         <tr><td>Size</td><td>70 × 70 cm</td></tr>
