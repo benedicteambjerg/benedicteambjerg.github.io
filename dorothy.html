@@ -25,14 +25,10 @@
     .main-img { cursor: zoom-in; overflow: hidden; }
     .main-img img { width: 100%; display: block; transition: transform 0.4s ease; }
     .main-img:hover img { transform: scale(1.02); }
-    .main-video { width: 100%; display: block; }
-    .main-video video { width: 100%; display: block; border: none; }
     .thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; position: relative; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
-    .thumb video { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
-    .thumb-play-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; text-shadow: 0 1px 6px rgba(0,0,0,0.5); pointer-events: none; }
     .info-col { position: sticky; top: 3rem; }
     .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
     .info-back:hover { color: var(--ink); }
@@ -83,12 +79,6 @@
       <div class="main-img" id="mainImgWrap" onclick="openLightbox('images/Dorothy_1.jpg', 'image')">
         <img src="images/Dorothy_1.jpg" alt="Dorothy" id="mainImgEl" />
       </div>
-      <div class="main-video" id="mainVideoWrap" style="display:none;">
-        <video id="mainVideoEl" controls playsinline muted>
-          <source src="images/Dorothy_6.mov" type="video/mp4" />
-        </video>
-      </div>
-
       <!-- Thumbnails -->
       <div class="thumb-row">
         <div class="thumb active" onclick="setMain('image', 'images/Dorothy_1.jpg', this)">
@@ -105,13 +95,7 @@
         </div>
         <div class="thumb" onclick="setMain('image', 'images/Dorothy_5.jpeg', this)">
           <img src="images/Dorothy_5.jpeg" alt="Dorothy — framed close" />
-        </div>
-        <div class="thumb" onclick="setMain('video', 'images/Dorothy_6.mov', this)">
-          <video muted playsinline preload="metadata">
-            <source src="images/Dorothy_6.mov" type="video/mp4" />
-          </video>
-          <div class="thumb-play-icon">▶</div>
-        </div>
+        </div>        </div>
       </div>
     </div>
 
@@ -133,9 +117,6 @@
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
     <img id="lightboxImg" src="" alt="" />
-    <video id="lightboxVideo" controls playsinline muted style="display:none; max-width:90vw; max-height:88vh;">
-      <source id="lightboxVideoSrc" src="" type="video/mp4" />
-    </video>
   </div>
 
   <footer>
@@ -147,6 +128,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     function setMain(type, src, thumb) {
+      if (type !== 'image') return;
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
       if (type === 'image') {
@@ -154,11 +136,6 @@
         document.getElementById('mainVideoWrap').style.display = 'none';
         document.getElementById('mainImgEl').src = src;
         document.getElementById('mainImgWrap').onclick = () => openLightbox(src, 'image');
-      } else {
-        document.getElementById('mainImgWrap').style.display = 'none';
-        document.getElementById('mainVideoWrap').style.display = '';
-        document.getElementById('mainVideoEl').src = src;
-        document.getElementById('mainVideoEl').load();
       }
     }
 
