@@ -29,12 +29,11 @@
     .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
-    .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
-    .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .info-col { position: sticky; top: 3rem; }
     .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
     .info-back:hover { color: var(--ink); }
-    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; line-height: 1.1; }
+    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 0.5rem; line-height: 1.1; }
+    .info-price { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem; }
     .info-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
     .info-table tr { border-bottom: 0.5px solid var(--border); }
     .info-table td { padding: 0.7rem 0; font-size: 0.78rem; line-height: 1.6; }
@@ -43,6 +42,22 @@
     .inquire-btn { display: block; width: 100%; text-align: center; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 1rem 2rem; text-decoration: none; transition: opacity 0.2s; }
     .inquire-btn:hover { opacity: 0.75; }
     .info-note { font-size: 0.65rem; color: var(--muted); line-height: 1.7; margin-top: 1rem; text-align: center; }
+    .purchase-overlay { position: fixed; inset: 0; background: rgba(17,17,16,0.5); z-index: 300; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .purchase-overlay.open { opacity: 1; pointer-events: all; }
+    .purchase-form { background: var(--white); max-width: 480px; width: 90%; padding: 3rem 2.5rem; position: relative; }
+    .purchase-form h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; font-style: italic; margin-bottom: 0.4rem; }
+    .purchase-form .form-subtitle { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 2rem; }
+    .purchase-form label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; margin-top: 1.2rem; }
+    .purchase-form input, .purchase-form textarea { width: 100%; border: 0.5px solid var(--border); padding: 0.7rem 0.8rem; font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .purchase-form input:focus, .purchase-form textarea:focus { border-color: var(--ink); }
+    .purchase-form textarea { resize: vertical; min-height: 80px; }
+    .purchase-form .form-submit { display: block; width: 100%; margin-top: 1.8rem; background: var(--ink); color: var(--white); border: none; padding: 1rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .purchase-form .form-submit:hover { opacity: 0.75; }
+    .purchase-form .form-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: color 0.2s; }
+    .purchase-form .form-close:hover { color: var(--ink); }
+    .form-success { display: none; text-align: center; padding: 2rem 0; }
+    .form-success p { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--ink); margin-bottom: 0.5rem; }
+    .form-success span { font-size: 0.75rem; color: var(--muted); }
     .lightbox { position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .lightbox.open { opacity: 1; pointer-events: all; }
     .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
@@ -74,35 +89,36 @@
 
   <div class="painting-layout">
     <div class="gallery-col">
-      <div class="main-img" onclick="openLightbox('images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg')">
-        <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" id="mainImgEl" />
+      <div class="main-img" onclick="openLightbox('images/tonya_1.jpg')">
+        <img src="images/tonya_1.jpg" alt="Tonya" id="mainImgEl" />
       </div>
       <div class="thumb-row">
-        <div class="thumb active" onclick="setMain('images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg', this)">
-          <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" />
+        <div class="thumb active" onclick="setMain('images/tonya_1.jpg', this)">
+          <img src="images/tonya_1.jpg" alt="Tonya" />
         </div>
-        <!--
-          TO ADD MORE PHOTOS:
-          Upload to images folder, then copy this block and fill in filename:
-          <div class="thumb" onclick="setMain('images/FILENAME.jpg', this)">
-            <img src="images/FILENAME.jpg" alt="Tonya" />
-          </div>
-        -->
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
+        <div class="thumb" onclick="setMain('images/tonya_2.jpg', this)">
+          <img src="images/tonya_2.jpg" alt="Tonya — room view" />
+        </div>
+        <div class="thumb" onclick="setMain('images/tonya_3.jpeg', this)">
+          <img src="images/tonya_3.jpeg" alt="Tonya — detail" />
+        </div>
+        <div class="thumb" onclick="setMain('images/tonya_4.jpeg', this)">
+          <img src="images/tonya_4.jpeg" alt="Tonya — framed" />
+        </div>
       </div>
     </div>
 
     <div class="info-col">
       <a class="info-back" href="originals.html">← Back to originals</a>
       <h1 class="info-title">Tonya</h1>
+      <p class="info-price">€600</p>
       <table class="info-table">
         <tr><td>Medium</td><td>Gouache & oil pastel on paper</td></tr>
         <tr><td>Size</td><td>57 × 77 cm</td></tr>
         <tr><td>Availability</td><td>Available</td></tr>
       </table>
-      <p class="info-desc">Original, one-of-a-kind work. For pricing and further details, please get in touch directly.</p>
-      <a class="inquire-btn" href="/cdn-cgi/l/email-protection#1072757e757479736475717d727a75627750777d71797c3e737f7d2f6365727a7573642d597e61657962692a30447f7e6971">Inquire about this work</a>
+      <p class="info-desc">Original, one-of-a-kind work. For further details or to arrange a viewing, please get in touch directly.</p>
+      <a class="inquire-btn" href="#" onclick="openPurchaseForm(); return false;">Purchase this work</a>
       <p class="info-note">You will receive a reply within 1–2 business days.</p>
     </div>
   </div>
@@ -112,12 +128,36 @@
     <img id="lightboxImg" src="" alt="" />
   </div>
 
+  <div class="purchase-overlay" id="purchaseOverlay" onclick="closePurchaseForm(event)">
+    <div class="purchase-form">
+      <button class="form-close" onclick="closePurchaseForm()">Close ✕</button>
+      <h2>Tonya</h2>
+      <p class="form-subtitle">€600 &nbsp;·&nbsp; Original work &nbsp;·&nbsp; Shipping quoted on request</p>
+      <div class="form-success" id="formSuccess">
+        <p>Thank you for your interest!</p>
+        <span>Benedicte will be in touch within 1–2 business days.</span>
+      </div>
+      <form id="purchaseForm" action="https://formspree.io/f/xgorokkr" method="POST">
+        <input type="hidden" name="painting" value="Tonya (€600)" />
+        <label for="fname">Your name</label>
+        <input type="text" id="fname" name="name" required placeholder="Jane Smith" />
+        <label for="femail">Your email</label>
+        <input type="email" id="femail" name="email" required placeholder="jane@example.com" />
+        <label for="fcountry">Your country</label>
+        <input type="text" id="fcountry" name="country" required placeholder="e.g. Germany, Denmark, UK..." />
+        <label for="fmessage">Message (optional)</label>
+        <textarea id="fmessage" name="message" placeholder="Any questions or additional details..."></textarea>
+        <button type="submit" class="form-submit">Send purchase inquiry</button>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <img class="footer-sig-runner" src="images/BAA signature 2.png" alt="Benedicte Ambjerg" />
     <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     function setMain(src, thumb) {
       document.getElementById('mainImgEl').src = src;
@@ -130,11 +170,29 @@
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-        function closeLightbox() {
+    function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    function openPurchaseForm() {
+      document.getElementById('purchaseOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePurchaseForm(e) {
+      if (e && e.target !== document.getElementById('purchaseOverlay')) return;
+      document.getElementById('purchaseOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const res = await fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closePurchaseForm(); } });
   </script>
 </body>
 </html>
