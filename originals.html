@@ -11,39 +11,38 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
     body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
+
     header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
     .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
     nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
-    .page-intro { max-width: 1100px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
-    .page-intro h1 { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; margin-bottom: 0.8rem; }
-    .page-intro p { font-size: 0.82rem; color: var(--muted); line-height: 1.9; }
-    .grid { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-    .grid-item { text-decoration: none; color: var(--ink); display: block; opacity: 0; animation: fadeIn 0.7s forwards; }
-    .grid-item:nth-child(1) { animation-delay: 0.05s; }
-    .grid-item:nth-child(2) { animation-delay: 0.12s; }
-    .grid-item:nth-child(3) { animation-delay: 0.19s; }
-    .grid-item:nth-child(4) { animation-delay: 0.26s; }
-    .grid-item:nth-child(5) { animation-delay: 0.33s; }
-    .grid-item:nth-child(6) { animation-delay: 0.40s; }
-    .grid-item:nth-child(7) { animation-delay: 0.47s; }
-    .grid-item:nth-child(8) { animation-delay: 0.54s; }
-    .grid-item:nth-child(9) { animation-delay: 0.61s; }
-    .grid-img { overflow: hidden; margin-bottom: 0.75rem; }
-    .grid-img img { width: 100%; display: block; transition: transform 0.6s ease; }
-    .grid-item:hover .grid-img img { transform: scale(1.03); }
-    .grid-title { font-family: var(--serif); font-size: 0.95rem; font-style: italic; display: block; margin-bottom: 0.2rem; }
-    .grid-meta { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--muted); display: block; }
-    footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+
+    .page-header { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .page-header h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; margin-bottom: 1rem; }
+    .page-header p { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.04em; }
+
+    .grid { max-width: 900px; margin: 0 auto; padding: 2rem 2rem 8rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3.5rem 2.5rem; }
+
+    .work-item { text-decoration: none; color: var(--ink); display: block; }
+    .work-item img { width: 100%; display: block; transition: opacity 0.3s; }
+    .work-item:hover img { opacity: 0.85; }
+    .work-item-title { font-family: var(--serif); font-size: 1.1rem; font-style: italic; font-weight: 300; margin-top: 1rem; margin-bottom: 0.2rem; }
+    .work-item-meta { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em; }
+
+    footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
     .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 750px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; padding: 1.5rem 1.2rem 5rem; } nav { gap: 1.5rem; } .page-intro { padding: 2.5rem 1.2rem 1.5rem; } }
-    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; gap: 2.5rem; padding: 1.5rem 1.2rem 6rem; }
+      .page-header { padding: 3rem 1.2rem 1.5rem; }
+      nav { gap: 1.5rem; }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <a class="site-name" href="index.html">Benedicte Ambjerg</a>
     <nav>
@@ -55,63 +54,77 @@
     </nav>
   </header>
 
-  <div class="page-intro">
+  <div class="page-header">
     <h1>Available Works</h1>
     <p>Original, one-of-a-kind paintings. Click any work to learn more and inquire.</p>
   </div>
 
   <div class="grid">
-    <a class="grid-item" href="bella.html">
-      <div class="grid-img"><img src="images/Bella_oiloncanvas_80x100cm.jpg" alt="Bella" /></div>
-      <span class="grid-title">Bella</span>
-      <span class="grid-meta">Oil on canvas · 80 × 100 cm</span>
+
+    <a class="work-item" href="bella.html">
+      <img src="images/Bella_1.jpg" alt="Bella" />
+      <p class="work-item-title">Bella</p>
+      <p class="work-item-meta">Oil on canvas · 80 × 100 cm</p>
     </a>
-    <a class="grid-item" href="dorothy.html">
-      <div class="grid-img"><img src="images/Dorothy_oilpiantandoilpasteloncanvas_60x80cm.jpg" alt="Dorothy" /></div>
-      <span class="grid-title">Dorothy</span>
-      <span class="grid-meta">Oil & oil pastel on canvas · 60 × 80 cm</span>
+
+    <a class="work-item" href="dorothy.html">
+      <img src="images/Dorothy_oilpiantandoilpasteloncanvas_60x80cm.jpg" alt="Dorothy" />
+      <p class="work-item-title">Dorothy</p>
+      <p class="work-item-meta">Oil & oil pastel on canvas · 60 × 80 cm</p>
     </a>
-    <a class="grid-item" href="flora.html">
-      <div class="grid-img"><img src="images/Flora_oiloncanvas_60x80cm.jpg" alt="Flora" /></div>
-      <span class="grid-title">Flora</span>
-      <span class="grid-meta">Oil on canvas · 60 × 80 cm</span>
+
+    <a class="work-item" href="flora.html">
+      <img src="images/Flora_oiloncanvas_60x80cm.jpg" alt="Flora" />
+      <p class="work-item-title">Flora</p>
+      <p class="work-item-meta">Oil on canvas · 60 × 80 cm</p>
     </a>
-    <a class="grid-item" href="grace.html">
-      <div class="grid-img"><img src="images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg" alt="Grace" /></div>
-      <span class="grid-title">Grace</span>
-      <span class="grid-meta">Oil & oil pastel on canvas · 70 × 70 cm</span>
+
+    <a class="work-item" href="grace.html">
+      <img src="images/Grace_oilpaintandoilpasteloncanvas_70x70cm.jpg" alt="Grace" />
+      <p class="work-item-title">Grace</p>
+      <p class="work-item-meta">Oil & oil pastel on canvas · 70 × 70 cm</p>
     </a>
-    <a class="grid-item" href="sadie.html">
-      <div class="grid-img"><img src="images/Sadie_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Sadie" /></div>
-      <span class="grid-title">Sadie</span>
-      <span class="grid-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
+
+    <a class="work-item" href="sadie.html">
+      <img src="images/Sadie_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Sadie" />
+      <p class="work-item-title">Sadie</p>
+      <p class="work-item-meta">Gouache & oil pastel on paper · 57 × 77 cm</p>
     </a>
-    <a class="grid-item" href="silke.html">
-      <div class="grid-img"><img src="images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Silke" /></div>
-      <span class="grid-title">Silke</span>
-      <span class="grid-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
+
+    <a class="work-item" href="silke.html">
+      <img src="images/Silke_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Silke" />
+      <p class="work-item-title">Silke</p>
+      <p class="work-item-meta">Gouache & oil pastel on paper · 57 × 77 cm</p>
     </a>
-    <a class="grid-item" href="sisters.html">
-      <div class="grid-img"><img src="images/Sisters_goaucheandsoftpastelonpaper_57x77cm.jpg" alt="Sisters" /></div>
-      <span class="grid-title">Sisters</span>
-      <span class="grid-meta">Gouache & soft pastel on paper · 57 × 77 cm</span>
+
+    <a class="work-item" href="sisters.html">
+      <img src="images/Sisters_goaucheandsoftpastelonpaper_57x77cm.jpg" alt="Sisters" />
+      <p class="work-item-title">Sisters</p>
+      <p class="work-item-meta">Gouache & soft pastel on paper · 57 × 77 cm</p>
     </a>
-    <a class="grid-item" href="therese.html">
-      <div class="grid-img"><img src="images/Therese_goaucheandsoftpastelonpaper_40x50cm.jpg" alt="Therese" /></div>
-      <span class="grid-title">Therese</span>
-      <span class="grid-meta">Gouache & soft pastel on paper · 40 × 50 cm</span>
+
+    <a class="work-item" href="therese.html">
+      <img src="images/Therese_goaucheandsoftpastelonpaper_40x50cm.jpg" alt="Therese" />
+      <p class="work-item-title">Therese</p>
+      <p class="work-item-meta">Gouache & soft pastel on paper · 40 × 50 cm</p>
     </a>
-    <a class="grid-item" href="tonya.html">
-      <div class="grid-img"><img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" /></div>
-      <span class="grid-title">Tonya</span>
-      <span class="grid-meta">Gouache & oil pastel on paper · 57 × 77 cm</span>
+
+    <a class="work-item" href="tonya.html">
+      <img src="images/Tonya_goaucheandoilpastelonpaper_57x77cm.jpg" alt="Tonya" />
+      <p class="work-item-title">Tonya</p>
+      <p class="work-item-meta">Gouache & oil pastel on paper · 57 × 77 cm</p>
     </a>
+
   </div>
 
   <footer>
     <img class="footer-sig-runner" src="images/BAA signature 2.png" alt="Benedicte Ambjerg" />
     <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
