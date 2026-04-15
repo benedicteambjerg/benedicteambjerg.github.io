@@ -29,12 +29,11 @@
     .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
-    .img-placeholder { background: #ebebea; width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
-    .img-placeholder span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .info-col { position: sticky; top: 3rem; }
     .info-back { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 2rem; transition: color 0.2s; }
     .info-back:hover { color: var(--ink); }
-    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; line-height: 1.1; }
+    .info-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; font-style: italic; margin-bottom: 0.5rem; line-height: 1.1; }
+    .info-price { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--ink); margin-bottom: 1.5rem; }
     .info-table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
     .info-table tr { border-bottom: 0.5px solid var(--border); }
     .info-table td { padding: 0.7rem 0; font-size: 0.78rem; line-height: 1.6; }
@@ -93,14 +92,14 @@
     <div class="info-col">
       <a class="info-back" href="originals.html">← Back to originals</a>
       <h1 class="info-title">Grace</h1>
-      <p class="info-price">€850</p>
+      <p class="info-price">€600</p>
       <table class="info-table">
         <tr><td>Medium</td><td>Oil & oil pastel on canvas</td></tr>
         <tr><td>Size</td><td>70 × 70 cm</td></tr>
         <tr><td>Availability</td><td>Available</td></tr>
       </table>
-      <p class="info-desc">Original, one-of-a-kind work. For pricing and further details, please get in touch directly.</p>
-      <a class="inquire-btn" href="/cdn-cgi/l/email-protection#d8babdb6bdbcb1bbacbdb9b5bab2bdaabf98bfb5b9b1b4f6bbb7b5e7abadbab2bdbbace591b6a9adb1aaa1e2f89faab9bbbd">Inquire about this work</a>
+      <p class="info-desc">Original, one-of-a-kind work. For further details or to arrange a viewing, please get in touch directly.</p>
+      <a class="inquire-btn" href="mailto:benedicteambjerg@gmail.com?subject=Inquiry: Grace">Inquire about this work</a>
       <p class="info-note">You will receive a reply within 1–2 business days.</p>
     </div>
   </div>
@@ -115,7 +114,7 @@
     <p>© <span id="year"></span> Benedicte Ambjerg. All rights reserved.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     function setMain(src, thumb) {
       document.getElementById('mainImgEl').src = src;
@@ -128,7 +127,7 @@
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-        function closeLightbox() {
+    function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }

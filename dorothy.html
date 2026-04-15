@@ -26,7 +26,7 @@
     .main-img img { width: 100%; display: block; transition: transform 0.4s ease; }
     .main-img:hover img { transform: scale(1.02); }
     .thumb-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; position: relative; }
+    .thumb { width: calc(33.333% - 6px); overflow: hidden; cursor: pointer; opacity: 0.55; transition: opacity 0.2s; border: 1px solid transparent; }
     .thumb:hover, .thumb.active { opacity: 1; border-color: var(--border); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1; }
     .info-col { position: sticky; top: 3rem; }
@@ -45,7 +45,6 @@
     .lightbox { position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .lightbox.open { opacity: 1; pointer-events: all; }
     .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
-    .lightbox video { max-width: 90vw; max-height: 88vh; display: block; }
     .lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--muted); cursor: pointer; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .lightbox-close:hover { color: var(--ink); }
     footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
@@ -74,28 +73,25 @@
 
   <div class="painting-layout">
     <div class="gallery-col">
-
-      <!-- Main display area -->
-      <div class="main-img" id="mainImgWrap" onclick="openLightbox('images/Dorothy_1.jpg', 'image')">
+      <div class="main-img" onclick="openLightbox('images/Dorothy_1.jpg')">
         <img src="images/Dorothy_1.jpg" alt="Dorothy" id="mainImgEl" />
       </div>
-      <!-- Thumbnails -->
       <div class="thumb-row">
-        <div class="thumb active" onclick="setMain('image', 'images/Dorothy_1.jpg', this)">
+        <div class="thumb active" onclick="setMain('images/Dorothy_1.jpg', this)">
           <img src="images/Dorothy_1.jpg" alt="Dorothy" />
         </div>
-        <div class="thumb" onclick="setMain('image', 'images/Dorothy_2.jpg', this)">
+        <div class="thumb" onclick="setMain('images/Dorothy_2.jpg', this)">
           <img src="images/Dorothy_2.jpg" alt="Dorothy — framed" />
         </div>
-        <div class="thumb" onclick="setMain('image', 'images/Dorothy_3.jpeg', this)">
+        <div class="thumb" onclick="setMain('images/Dorothy_3.jpeg', this)">
           <img src="images/Dorothy_3.jpeg" alt="Dorothy — room view" />
         </div>
-        <div class="thumb" onclick="setMain('image', 'images/Dorothy_4.jpeg', this)">
+        <div class="thumb" onclick="setMain('images/Dorothy_4.jpeg', this)">
           <img src="images/Dorothy_4.jpeg" alt="Dorothy — detail" />
         </div>
-        <div class="thumb" onclick="setMain('image', 'images/Dorothy_5.jpeg', this)">
+        <div class="thumb" onclick="setMain('images/Dorothy_5.jpeg', this)">
           <img src="images/Dorothy_5.jpeg" alt="Dorothy — framed close" />
-        </div>        </div>
+        </div>
       </div>
     </div>
 
@@ -126,44 +122,21 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    function setMain(type, src, thumb) {
-      if (type !== 'image') return;
+    function setMain(src, thumb) {
+      document.getElementById('mainImgEl').src = src;
+      document.getElementById('mainImgEl').parentElement.onclick = () => openLightbox(src);
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
-      if (type === 'image') {
-        document.getElementById('mainImgWrap').style.display = '';
-        document.getElementById('mainVideoWrap').style.display = 'none';
-        document.getElementById('mainImgEl').src = src;
-        document.getElementById('mainImgWrap').onclick = () => openLightbox(src, 'image');
-      }
     }
-
-    function openLightbox(src, type) {
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lightboxImg');
-      const vid = document.getElementById('lightboxVideo');
-      const vidSrc = document.getElementById('lightboxVideoSrc');
-      if (type === 'image') {
-        img.src = src;
-        img.style.display = '';
-        vid.style.display = 'none';
-      } else {
-        vidSrc.src = src;
-        vid.load();
-        vid.style.display = '';
-        img.style.display = 'none';
-      }
-      lb.classList.add('open');
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
-      document.getElementById('lightboxVideo').pause();
       document.body.style.overflow = '';
     }
-
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
