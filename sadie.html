@@ -51,6 +51,23 @@
     .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
     footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
     @media (max-width: 800px) { .painting-layout { grid-template-columns: 1fr; gap: 3rem; padding: 1.5rem 1.2rem 5rem; } .info-col { position: static; } nav { gap: 1.5rem; } .breadcrumb { padding: 1.2rem 1.2rem 0; } }
+
+    .purchase-overlay { position: fixed; inset: 0; background: rgba(17,17,16,0.5); z-index: 300; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .purchase-overlay.open { opacity: 1; pointer-events: all; }
+    .purchase-form { background: var(--white); max-width: 480px; width: 90%; padding: 3rem 2.5rem; position: relative; }
+    .purchase-form h2 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; font-style: italic; margin-bottom: 0.4rem; }
+    .purchase-form .form-subtitle { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 2rem; }
+    .purchase-form label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; margin-top: 1.2rem; }
+    .purchase-form input, .purchase-form textarea, .purchase-form select { width: 100%; border: 0.5px solid var(--border); padding: 0.7rem 0.8rem; font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .purchase-form input:focus, .purchase-form textarea:focus, .purchase-form select:focus { border-color: var(--ink); }
+    .purchase-form textarea { resize: vertical; min-height: 80px; }
+    .purchase-form .form-submit { display: block; width: 100%; margin-top: 1.8rem; background: var(--ink); color: var(--white); border: none; padding: 1rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .purchase-form .form-submit:hover { opacity: 0.75; }
+    .purchase-form .form-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: color 0.2s; }
+    .purchase-form .form-close:hover { color: var(--ink); }
+    .form-success { display: none; text-align: center; padding: 2rem 0; }
+    .form-success p { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--ink); margin-bottom: 0.5rem; }
+    .form-success span { font-size: 0.75rem; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -102,7 +119,7 @@
         <tr><td>Availability</td><td>Available</td></tr>
       </table>
       <p class="info-desc">Original, one-of-a-kind work. For further details or to arrange a viewing, please get in touch directly.</p>
-      <a class="inquire-btn" href="mailto:benedicteambjerg@gmail.com?subject=Inquiry: Sadie">Inquire about this work</a>
+      <a class="inquire-btn" href="#" onclick="openPurchaseForm(); return false;">Purchase this work</a>
       <p class="info-note">You will receive a reply within 1–2 business days.</p>
     </div>
   </div>
@@ -135,6 +152,51 @@
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+  <div class="purchase-overlay" id="purchaseOverlay" onclick="closePurchaseForm(event)">
+    <div class="purchase-form">
+      <button class="form-close" onclick="closePurchaseForm()">Close ✕</button>
+      <h2>Sadie</h2>
+      <p class="form-subtitle">€700 &nbsp;·&nbsp; Original work</p>
+      <div class="form-success" id="formSuccess">
+        <p>Thank you for your interest!</p>
+        <span>Benedicte will be in touch within 1–2 business days.</span>
+      </div>
+      <form id="purchaseForm" action="https://formspree.io/f/xgorokkr" method="POST">
+        <input type="hidden" name="painting" value="Sadie (€700)" />
+        <label for="fname">Your name</label>
+        <input type="text" id="fname" name="name" required placeholder="Jane Smith" />
+        <label for="femail">Your email</label>
+        <input type="email" id="femail" name="email" required placeholder="jane@example.com" />
+        <label for="fcountry">Your country</label>
+        <input type="text" id="fcountry" name="country" required placeholder="e.g. Germany, Denmark, UK..." />
+        <label for="fmessage">Message (optional)</label>
+        <textarea id="fmessage" name="message" placeholder="Any questions or additional details..."></textarea>
+        <button type="submit" class="form-submit">Send purchase inquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openPurchaseForm() {
+      document.getElementById('purchaseOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePurchaseForm(e) {
+      if (e && e.target !== document.getElementById('purchaseOverlay')) return;
+      document.getElementById('purchaseOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const res = await fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    });
   </script>
 </body>
 </html>
