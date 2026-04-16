@@ -103,8 +103,12 @@
             <img src="images/FILENAME.jpg" alt="Sisters" />
           </div>
         -->
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
-        <div class="thumb"><div class="img-placeholder"><span>Add photo</span></div></div>
+        <div class="thumb" onclick="setMain('images/sisters_2.jpg', this)">
+          <img src="images/sisters_2.jpg" alt="Sisters — room view" />
+        </div>
+        <div class="thumb" onclick="setMain('images/sisters_3.jpeg', this)">
+          <img src="images/sisters_3.jpeg" alt="Sisters — studio" />
+        </div>
       </div>
     </div>
 
@@ -142,7 +146,7 @@
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
     }
-    const lbImages = ["images/Sisters_goaucheandsoftpastelonpaper_57x77cm.jpg"];
+    const lbImages = ["images/Sisters_goaucheandsoftpastelonpaper_57x77cm.jpg", "images/sisters_2.jpg", "images/sisters_3.jpeg"];
     let lbIndex = 0;
     function openLightbox(src) {
       lbIndex = lbImages.indexOf(src);
