@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLD5MBC04"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NNLD5MBC04');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commission — Benedicte Ambjerg</title>
+  <meta name="description" content="Commission an original painting by Benedicte Ambjerg, Danish artist living and working in Berlin." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #111110; --white: #ffffff; --muted: #aaa9a7; --border: rgba(17,17,16,0.1); --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; }
+
+    header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+    .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--ink); }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    /* ── LEFT ── */
+    .left { position: sticky; top: 4rem; }
+
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .intro-text {
+      font-size: 0.85rem;
+      line-height: 2;
+      color: #555554;
+      margin-bottom: 3rem;
+    }
+
+    /* ── PROCESS ── */
+    .process { border-top: 0.5px solid var(--border); }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 1.2rem;
+      padding: 1.6rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.05rem;
+    }
+
+    .step-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-desc {
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: #666664;
+    }
+
+    /* ── DETAILS BOX ── */
+    .details-box {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 0.5px solid var(--border);
+    }
+
+    .details-box p {
+      font-size: 0.72rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .details-box strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── FORM ── */
+    .form-col {}
+
+    .form-heading {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+    }
+
+    .form-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      margin-top: 1.4rem;
+    }
+
+    label:first-of-type { margin-top: 0; }
+
+    input, textarea, select {
+      width: 100%;
+      border: 0.5px solid var(--border);
+      padding: 0.75rem 0.9rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    input:focus, textarea:focus, select:focus { border-color: var(--ink); }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .submit-btn:hover { opacity: 0.75; }
+
+    .form-note {
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .form-success p {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer { border-top: 0.5px solid var(--border); padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .footer-sig-runner { width: 100%; max-width: 400px; opacity: 0.25; display: block; }
+    footer p { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.07em; }
+
+    @media (max-width: 750px) {
+      .wrap { grid-template-columns: 1fr; gap: 3.5rem; padding: 3.5rem 1.2rem 6rem; }
+      .left { position: static; }
+      nav { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="site-name" href="index.html">Benedicte Ambjerg</a>
+            <nav>
+      <a href="index.html">Work</a>
+      <div class="dropdown">
+        <span class="dropdown-toggle active">Shop</span>
+        <div class="dropdown-menu">
+          <a href="originals.html">Originals</a>
+          <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
+          <a href="commission.html"  class="active">Commission</a>
+        </div>
+      </div>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+
+    <!-- LEFT -->
+    <div class="left">
+      <h1 class="page-title">Commission<br>a painting</h1>
+
+      <p class="intro-text">A commissioned painting is a chance to create something made entirely for you. Tell me about a feeling, a colour palette, a space — and I'll translate that into an original work, painted with the same intention as everything in my studio.</p>
+
+      <div class="process">
+
+        <div class="process-step">
+          <span class="step-num">1</span>
+          <div>
+            <p class="step-title">Get in touch</p>
+            <p class="step-desc">Fill in the form with your ideas — size, mood, colours, budget. The more you share, the better. I'll get back to you within 1–2 days to see if we're a good fit.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">2</span>
+          <div>
+            <p class="step-title">We agree on the details</p>
+            <p class="step-desc">Once we've talked through the brief, I'll confirm the price and timeline. A 50% deposit is required before I begin.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">3</span>
+          <div>
+            <p class="step-title">I paint</p>
+            <p class="step-desc">I work from your brief in my Berlin studio. Commissions typically take 2–4 weeks from the start date depending on the size and medium.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">4</span>
+          <div>
+            <p class="step-title">You approve</p>
+            <p class="step-desc">Before shipping, I send you a photo of the finished work. Once you're happy, the remaining balance is due and I arrange delivery.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">5</span>
+          <div>
+            <p class="step-title">Delivered to your door</p>
+            <p class="step-desc">I ship worldwide. Shipping costs are quoted individually based on size and destination.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="details-box">
+        <p><strong>Starting from €600</strong> · Final price depends on size and complexity.</p>
+        <p style="margin-top:0.6rem;"><strong>Deposit</strong> · 50% upfront, 50% on completion.</p>
+        <p style="margin-top:0.6rem;"><strong>Timeline</strong> · 2–4 weeks from start date.</p>
+        <p style="margin-top:0.6rem;"><strong>Shipping</strong> · Worldwide.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="form-col">
+      <p class="form-heading">Tell me about your piece</p>
+      <p class="form-sub">I'll be in touch within 1–2 business days</p>
+
+      <div class="form-success" id="formSuccess">
+        <p>Thank you for reaching out.</p>
+        <span>I'll be in touch within 1–2 business days.</span>
+      </div>
+
+      <form id="commissionForm" action="https://formspree.io/f/xgorokkr" method="POST">
+        <input type="hidden" name="type" value="Commission inquiry" />
+
+        <label for="fname">Your name</label>
+        <input type="text" id="fname" name="name" required placeholder="Jane Smith" />
+
+        <label for="femail">Your email</label>
+        <input type="email" id="femail" name="email" required placeholder="jane@example.com" />
+
+        <label for="fsize">Size you have in mind</label>
+        <input type="text" id="fsize" name="size" placeholder="e.g. 60 × 80 cm, or open to suggestions" />
+
+        <label for="fbudget">Your budget</label>
+        <select id="fbudget" name="budget">
+          <option value="" disabled selected>Select a range</option>
+          <option>€600 – €800</option>
+          <option>€800 – €1,200</option>
+          <option>€1,200 – €2,000</option>
+          <option>€2,000+</option>
+        </select>
+
+        <label for="fmood">Mood &amp; colour palette</label>
+        <textarea id="fmood" name="mood" placeholder="e.g. muted tones, something melancholic, dusty blues and reds — or mention existing works of mine you're drawn to"></textarea>
+
+        <label for="fwhere">Where will it live?</label>
+        <input type="text" id="fwhere" name="where" placeholder="e.g. living room, a gift, office..." />
+
+        <label for="fcountry">Your country</label>
+        <input type="text" id="fcountry" name="country" required placeholder="e.g. Germany, USA, Denmark..." />
+
+        <label for="fmessage">Anything else you'd like to share</label>
+        <textarea id="fmessage" name="message" placeholder="References, feelings, context — anything that helps me understand what you're looking for"></textarea>
+
+        <button type="submit" class="submit-btn">Send inquiry</button>
+        <p class="form-note">I take on a small number of commissions at a time — early enquiries are welcome.</p>
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    <img class="footer-sig-runner" src="images/BAA signature 2.png" alt="Benedicte Ambjerg" />
+    <p>© <span id="yr"></span> Benedicte Ambjerg. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    document.getElementById('commissionForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const res = await fetch(this.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNLD5MBC04"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NNLD5MBC04');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Originals — Benedicte Ambjerg</title>
@@ -39,16 +47,58 @@
       .page-header { padding: 3rem 1.2rem 1.5rem; }
       nav { gap: 1.5rem; }
     }
+
+    /* ── DROPDOWN ── */
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer; transition: color 0.2s;
+      user-select: none;
+    }
+    .dropdown-toggle:hover, .dropdown-toggle.active { color: var(--ink); }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      padding: 0.6rem 0;
+      min-width: 130px;
+      z-index: 200;
+      text-align: left;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover, .dropdown-menu a.active { color: var(--ink); }
   </style>
 </head>
 <body>
 
   <header>
     <a class="site-name" href="index.html">Benedicte Ambjerg</a>
-    <nav>
+        <nav>
       <a href="index.html">Work</a>
-      <a href="originals.html" class="active">Originals</a>
-      <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
+      <div class="dropdown">
+        <span class="dropdown-toggle active">Shop</span>
+        <div class="dropdown-menu">
+          <a href="originals.html"  class="active">Originals</a>
+          <a href="https://kraess.store/en/artist/benedicte-ambjerg/?currency=EUR" target="_blank" rel="noopener">Prints</a>
+          <a href="commission.html">Commission</a>
+        </div>
+      </div>
+      <a href="portfolio.html">Portfolio</a>
       <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>
     </nav>
