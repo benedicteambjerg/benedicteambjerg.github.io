@@ -205,14 +205,48 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 600px) { nav { gap: 1.5rem; } }
+
+    .dropdown { position: relative; display: inline-flex; align-items: center; }
+    .dropdown-toggle {
+      font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); cursor: default; transition: color 0.2s;
+    }
+    .dropdown:hover .dropdown-toggle { color: var(--ink); }
+    .dropdown-toggle.active { color: var(--ink); }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      padding: 0.5rem 0;
+      min-width: 120px;
+      z-index: 200;
+      text-align: center;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover, .dropdown-menu a.active { color: var(--ink); }
   </style>
 </head>
 <body>
 
   <header>
     <a class="site-name" href="index.html">Benedicte Ambjerg</a>
-            <nav>
-      <a href="index.html">Work</a>
+                    <nav>
+            <a href="index.html">Work</a>
       <div class="dropdown">
         <span class="dropdown-toggle">Shop</span>
         <div class="dropdown-menu">
@@ -221,9 +255,9 @@
           <a href="commission.html">Commission</a>
         </div>
       </div>
-      <a href="portfolio.html"  class="active">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="index.html#contact">Contact</a>
+            <a href="portfolio.html" class="active">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 

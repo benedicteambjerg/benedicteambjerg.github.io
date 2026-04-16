@@ -24,7 +24,7 @@
     header { text-align: center; padding: 3rem 2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
     .site-name { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 400; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); display: block; margin-bottom: 1.8rem; }
     nav { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
-    nav a { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav a { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     nav a:hover, nav a.active { color: var(--ink); }
 
     /* PAGE LAYOUT */
@@ -114,14 +114,48 @@
       .cv-sidebar { position: static; }
       nav { gap: 1.5rem; }
     }
+
+    .dropdown { position: relative; display: inline-flex; align-items: center; }
+    .dropdown-toggle {
+      font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); cursor: default; transition: color 0.2s;
+    }
+    .dropdown:hover .dropdown-toggle { color: var(--ink); }
+    .dropdown-toggle.active { color: var(--ink); }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      padding: 0.5rem 0;
+      min-width: 120px;
+      z-index: 200;
+      text-align: center;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover, .dropdown-menu a.active { color: var(--ink); }
   </style>
 </head>
 <body>
 
   <header>
     <a class="site-name" href="index.html">Benedicte Ambjerg</a>
-            <nav>
-      <a href="index.html">Work</a>
+                    <nav>
+            <a href="index.html">Work</a>
       <div class="dropdown">
         <span class="dropdown-toggle">Shop</span>
         <div class="dropdown-menu">
@@ -130,9 +164,9 @@
           <a href="commission.html">Commission</a>
         </div>
       </div>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html"  class="active">About</a>
-      <a href="index.html#contact">Contact</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html" class="active">About</a>
+            <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 
@@ -152,11 +186,11 @@
     <!-- RIGHT CV -->
     <div class="cv-content">
 
-      <div class="cv-section">
+            <div class="cv-section">
         <blockquote style="font-family: var(--serif); font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-style: italic; font-weight: 300; line-height: 1.6; color: #555554; margin-bottom: 0;">"I create my art from real emotions, and hope that you find your own within it."</blockquote>
       </div>
 
-            <div class="cv-section">
+      <div class="cv-section">
         <img src="images/DSC00461_2.JPG" alt="Benedicte Ambjerg in her studio" style="width: 70%; display: block; margin: 0 auto 2.5rem;" />
 
         <blockquote style="font-family: var(--serif); font-size: 1.15rem; font-style: italic; font-weight: 300; line-height: 1.7; color: #555554; border-left: none; padding: 0; margin-bottom: 0.6rem;">
