@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Benedicte Ambjerg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0d0c;
+      --text: #c9c3b8;
+      --muted: #5a5550;
+      --light: #e8e2d9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      background: linear-gradient(to bottom, rgba(14,13,12,0.95) 60%, transparent);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--light); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 7rem 3rem 2.5rem;
+      border-bottom: 1px solid rgba(90,85,80,0.2);
+    }
+
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--light);
+      letter-spacing: 0.06em;
+    }
+
+    .page-header p {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── YEAR JUMP NAV ── */
+    .year-nav {
+      display: flex;
+      gap: 1.8rem;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid rgba(90,85,80,0.12);
+      flex-wrap: wrap;
+    }
+
+    .year-nav a {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .year-nav a:hover { color: var(--light); }
+
+    /* ── YEAR SECTION ── */
+    .year-section {
+      padding: 4rem 3rem 0;
+    }
+
+    .year-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: rgba(200,190,178,0.07);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+
+    /* ── MASONRY GRID ── */
+    .grid-container {
+      columns: 3;
+      column-gap: 1.2rem;
+      padding-bottom: 5rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-container { columns: 2; }
+    }
+
+    @media (max-width: 540px) {
+      .grid-container { columns: 1; }
+      nav { padding: 1.2rem 1.4rem; }
+      .page-header { padding: 6rem 1.4rem 2rem; }
+      .year-section { padding: 3rem 1.2rem 0; }
+      .year-nav { padding: 1.2rem 1.4rem; gap: 1.2rem; }
+      .year-divider { margin: 0 1.2rem; }
+    }
+
+    .grid-item {
+      break-inside: avoid;
+      margin-bottom: 1.2rem;
+      cursor: pointer;
+    }
+
+    .grid-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.4s ease;
+    }
+
+    .grid-item:hover img { opacity: 0.82; }
+
+    .caption { padding: 0.65rem 0 0.2rem; }
+
+    .caption .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .caption .year-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .year-divider {
+      height: 1px;
+      background: rgba(90,85,80,0.15);
+      margin: 0 3rem;
+    }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,9,8,0.96);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox-inner {
+      max-width: min(90vw, 1100px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      cursor: default;
+    }
+
+    #lightbox-img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    }
+
+    #lightbox-caption { text-align: center; }
+
+    #lightbox-caption .lb-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--light);
+      letter-spacing: 0.06em;
+    }
+
+    #lightbox-caption .lb-year {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    #lightbox-close {
+      position: fixed;
+      top: 1.5rem; right: 2rem;
+      background: none; border: none;
+      color: var(--muted); font-size: 1.6rem;
+      cursor: pointer; line-height: 1;
+      transition: color 0.2s;
+      font-family: 'Raleway', sans-serif; font-weight: 200;
+    }
+
+    #lightbox-close:hover { color: var(--light); }
+
+    #lightbox-prev, #lightbox-next {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--muted); font-size: 2rem;
+      cursor: pointer; padding: 1rem;
+      transition: color 0.2s; line-height: 1;
+      font-family: 'Raleway', sans-serif; font-weight: 200;
+    }
+
+    #lightbox-prev { left: 1rem; }
+    #lightbox-next { right: 1rem; }
+    #lightbox-prev:hover, #lightbox-next:hover { color: var(--light); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(90,85,80,0.15);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 540px) {
+      footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-name" href="index.html">Benedicte Ambjerg</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <h1>Portfolio</h1>
+    <p>Selected works · Oil &amp; pastel on canvas</p>
+  </header>
+
+  <nav class="year-nav" aria-label="Jump to year">
+    <a href="#year-2026">2026</a>
+    <a href="#year-2025">2025</a>
+    <a href="#year-2024">2024</a>
+    <a href="#year-2023">2023</a>
+    <a href="#year-2022">2022</a>
+  </nav>
+
+  <main id="gallery">
+
+    <!-- ══════════ 2026 ══════════ -->
+    <section class="year-section" id="year-2026">
+      <div class="year-heading">2026</div>
+      <div class="grid-container">
+
+        <div class="grid-item">
+          <img src="images/Lucia_2026.JPG" alt="Lucia" loading="lazy" />
+          <div class="caption"><div class="title">Lucia</div><div class="year-label">2026</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Lydia_2026.jpeg" alt="Lydia" loading="lazy" />
+          <div class="caption"><div class="title">Lydia</div><div class="year-label">2026</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Sisters_2026.jpeg" alt="Sisters" loading="lazy" />
+          <div class="caption"><div class="title">Sisters</div><div class="year-label">2026</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Therese_2026.jpeg" alt="Therese" loading="lazy" />
+          <div class="caption"><div class="title">Therese</div><div class="year-label">2026</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="year-divider"></div>
+
+    <!-- ══════════ 2025 ══════════ -->
+    <section class="year-section" id="year-2025">
+      <div class="year-heading">2025</div>
+      <div class="grid-container">
+
+        <div class="grid-item">
+          <img src="images/Bella_2025.jpeg" alt="Bella" loading="lazy" />
+          <div class="caption"><div class="title">Bella</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Dorothy_2025.jpeg" alt="Dorothy" loading="lazy" />
+          <div class="caption"><div class="title">Dorothy</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Flora_2025.jpeg" alt="Flora" loading="lazy" />
+          <div class="caption"><div class="title">Flora</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Grace_2025.jpeg" alt="Grace" loading="lazy" />
+          <div class="caption"><div class="title">Grace</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Sadie_2025.jpg" alt="Sadie" loading="lazy" />
+          <div class="caption"><div class="title">Sadie</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/silke_2025.jpg" alt="Silke" loading="lazy" />
+          <div class="caption"><div class="title">Silke</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Spotteddreamer_2025.jpg" alt="Spotted Dreamer" loading="lazy" />
+          <div class="caption"><div class="title">Spotted Dreamer</div><div class="year-label">2025</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Tonya_2025.jpeg" alt="Tonya" loading="lazy" />
+          <div class="caption"><div class="title">Tonya</div><div class="year-label">2025</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="year-divider"></div>
+
+    <!-- ══════════ 2024 ══════════ -->
+    <section class="year-section" id="year-2024">
+      <div class="year-heading">2024</div>
+      <div class="grid-container">
+
+        <div class="grid-item">
+          <img src="images/beyond_myself_2024.jpg" alt="Beyond Myself" loading="lazy" />
+          <div class="caption"><div class="title">Beyond Myself</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/birds_2024.jpg" alt="Birds" loading="lazy" />
+          <div class="caption"><div class="title">Birds</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/blinded_2024.jpg" alt="Blinded" loading="lazy" />
+          <div class="caption"><div class="title">Blinded</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/blooming_2024.jpg" alt="Blooming" loading="lazy" />
+          <div class="caption"><div class="title">Blooming</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Down_2024.jpg" alt="Down" loading="lazy" />
+          <div class="caption"><div class="title">Down</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/FallInLoveAgain_2024.jpg" alt="Fall in Love Again" loading="lazy" />
+          <div class="caption"><div class="title">Fall in Love Again</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Floating_2024.jpg" alt="Floating" loading="lazy" />
+          <div class="caption"><div class="title">Floating</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Frost_2024.jpg" alt="Frost" loading="lazy" />
+          <div class="caption"><div class="title">Frost</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/gaininghope_2024.jpg" alt="Gaining Hope" loading="lazy" />
+          <div class="caption"><div class="title">Gaining Hope</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/hallwaylight_2024.jpg" alt="Hallway Light" loading="lazy" />
+          <div class="caption"><div class="title">Hallway Light</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Intwodimensions_2024.jpg" alt="In Two Dimensions" loading="lazy" />
+          <div class="caption"><div class="title">In Two Dimensions</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/keroseneheart_2024.jpg" alt="Kerosene Heart" loading="lazy" />
+          <div class="caption"><div class="title">Kerosene Heart</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/moonbeam_2024.jpg" alt="Moonbeam" loading="lazy" />
+          <div class="caption"><div class="title">Moonbeam</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/naturesway_2024.jpg" alt="Nature's Way" loading="lazy" />
+          <div class="caption"><div class="title">Nature's Way</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/selfprotected_2024.jpg" alt="Self Protected" loading="lazy" />
+          <div class="caption"><div class="title">Self Protected</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/thesea_2024.jpg" alt="The Sea" loading="lazy" />
+          <div class="caption"><div class="title">The Sea</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/throughtheeyesofa_woman_2024.jpg" alt="Through the Eyes of a Woman" loading="lazy" />
+          <div class="caption"><div class="title">Through the Eyes of a Woman</div><div class="year-label">2024</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/wiltingappearance_2024.jpg" alt="Wilting Appearance" loading="lazy" />
+          <div class="caption"><div class="title">Wilting Appearance</div><div class="year-label">2024</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="year-divider"></div>
+
+    <!-- ══════════ 2023 ══════════ -->
+    <section class="year-section" id="year-2023">
+      <div class="year-heading">2023</div>
+      <div class="grid-container">
+
+        <div class="grid-item">
+          <img src="images/balanced_2023.jpg" alt="Balanced" loading="lazy" />
+          <div class="caption"><div class="title">Balanced</div><div class="year-label">2023</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/Bowy_2023.jpg" alt="Bowy" loading="lazy" />
+          <div class="caption"><div class="title">Bowy</div><div class="year-label">2023</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/CarryMe_2023.jpg" alt="Carry Me" loading="lazy" />
+          <div class="caption"><div class="title">Carry Me</div><div class="year-label">2023</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/HoldOn_2023.jpg" alt="Hold On" loading="lazy" />
+          <div class="caption"><div class="title">Hold On</div><div class="year-label">2023</div></div>
+        </div>
+
+        <div class="grid-item">
+          <img src="images/windowpain_2023.jpg" alt="Window Pain" loading="lazy" />
+          <div class="caption"><div class="title">Window Pain</div><div class="year-label">2023</div></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="year-divider"></div>
+
+    <!-- ══════════ 2022 ══════════ -->
+    <section class="year-section" id="year-2022">
+      <div class="year-heading">2022</div>
+      <div class="grid-container">
+
+        <div class="grid-item">
+          <img src="images/Mother_2022.jpg" alt="Mother" loading="lazy" />
+          <div class="caption"><div class="title">Mother</div><div class="year-label">2022</div></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <button id="lightbox-prev" aria-label="Previous">&#8592;</button>
+    <div id="lightbox-inner" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="" />
+      <div id="lightbox-caption">
+        <div class="lb-title" id="lb-title"></div>
+        <div class="lb-year" id="lb-year"></div>
+      </div>
+    </div>
+    <button id="lightbox-next" aria-label="Next">&#8594;</button>
+  </div>
+
+  <footer>
+    <span>© <span id="yr"></span> Benedicte Ambjerg</span>
+    <span>All rights reserved</span>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const items = Array.from(document.querySelectorAll('.grid-item'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbTitle = document.getElementById('lb-title');
+    const lbYear = document.getElementById('lb-year');
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      const item = items[current];
+      lbImg.src = item.querySelector('img').src;
+      lbImg.alt = item.querySelector('img').alt;
+      lbTitle.textContent = item.querySelector('.title').textContent;
+      lbYear.textContent = item.querySelector('.year-label').textContent;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(dir) {
+      current = (current + dir + items.length) % items.length;
+      openLightbox(current);
+    }
+
+    items.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); navigate(-1); });
+    document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); navigate(1); });
+    lightbox.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+  </script>
+</body>
+</html>
